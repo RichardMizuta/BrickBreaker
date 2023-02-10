@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrickBreaker", "BrickBreaker.csproj", "{981389A9-7AB0-40C2-9279-47A4111EC467}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{981389A9-7AB0-40C2-9279-47A4111EC467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981389A9-7AB0-40C2-9279-47A4111EC467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981389A9-7AB0-40C2-9279-47A4111EC467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981389A9-7AB0-40C2-9279-47A4111EC467}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43F0557F-E6FF-41E2-AC40-1C9A5478FB6B}
+	EndGlobalSection
+EndGlobal
