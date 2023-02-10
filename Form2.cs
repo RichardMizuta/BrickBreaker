@@ -23,6 +23,7 @@ namespace BrickBreaker
         //isBrokenの設定
         const int BLOCK_COLUMN_COUNT = 15;
         const int BLOCK_ROW_COUNT = 8;
+        const int a = 3;
 
 
         //各ブロックに対する崩れたか否かのブール
