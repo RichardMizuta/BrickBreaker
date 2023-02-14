@@ -9,6 +9,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 using System.Windows.Forms.VisualStyles;
 
 namespace BrickBreaker
@@ -23,6 +24,8 @@ namespace BrickBreaker
         //isBrokenの設定
         const int BLOCK_COLUMN_COUNT = 15;
         const int BLOCK_ROW_COUNT = 8;
+        const int BLOCK_WIDTH = FIELD_WIDTH / BLOCK_COLUMN_COUNT;
+        const int BLOCK_HEIGHT = 10;
         const int a = 3;
 
 
@@ -44,12 +47,28 @@ namespace BrickBreaker
 
             base.OnPaint(e);
         }
+
         private void DrawField(Graphics g)
         {
             Rectangle rect = new Rectangle(FIELD_POSITION_X, FIELD_POSITION_Y, FIELD_WIDTH, FIELD_HEIGHT);
             g.DrawRectangle(new Pen(Color.White), rect);
         }
-        void ResetBlocks(PaintEventArgs e)
+
+
+        private void SpaceOnClick(object sender, KeyEventArgs e)
+        {
+            Keys key = e.KeyCode; 
+            if (key == Keys.Space) 
+            {
+                GameStart();
+            }
+        }
+        private void GameStart()
+        {
+            ClearAllBroken();
+        }
+
+        private void ClearAllBroken()
         {
             for (int y = 0; y < BLOCK_ROW_COUNT; y++)
             {
@@ -58,8 +77,8 @@ namespace BrickBreaker
                     isBroken[y, x] = false;
                 }
             }
-            DrawBlocks(e.Graphics);
         }
+
         private void DrawBlocks(Graphics g)
         {
             for (int y = 0; y < BLOCK_ROW_COUNT; y++)
@@ -95,7 +114,7 @@ namespace BrickBreaker
                 for (int x = 0; x < BLOCK_COLUMN_COUNT; x++)
                 {
                     //以下の！はnull排除演算子といって変数にnullがないことを示している
-                    if (isBroken[y, x]!)
+                    if (!isBroken[y, x])
                     {
                         DrawBlock(g, x, y, color);
                     }
@@ -104,6 +123,18 @@ namespace BrickBreaker
         }
         private void DrawBlock(Graphics g, int column,int row, Color color)
         {
+            Rectangle rect = GetBlockRect(column,row);
+            SolidBrush brush = new SolidBrush(color);
+            g.FillRectangle(brush, rect);
+            g.DrawRectangle(new Pen (Color.Black), rect);
+        }
+        Rectangle GetBlockRect(int column,int row)
+        {
+            Rectangle rect = new Rectangle(
+                    new Point(column * BLOCK_WIDTH + FIELD_POSITION_X, row * BLOCK_HEIGHT + FIELD_POSITION_Y + 20),
+                    new Size(BLOCK_WIDTH, BLOCK_HEIGHT)
+                );
+            return rect;
 
         }
         private void F_Main_Load(object sender, EventArgs e)
